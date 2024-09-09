@@ -24,7 +24,7 @@ RUN apt-get update \
 # nvm environment variables
 ENV NVM_VERSION 0.37.2
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 14.4.0
+ENV NODE_VERSION 16.15.1
 
 # install nvm
 # https://github.com/creationix/nvm#install-script
@@ -46,6 +46,9 @@ RUN node -v
 RUN npm -v
 
 ## INSTALL EDITLY
+
+RUN echo "export LD_LIBRARY_PATH=/app/node_modules/canvas/build/Release/" >> /root/.bashrc
+ENV LD_LIBRARY_PATH /app/node_modules/canvas/build/Release/
 
 # ## Install app dependencies
 COPY package.json /app/
